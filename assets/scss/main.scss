@@ -1,0 +1,9 @@
+﻿$icon-font-path: "fonts/";
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../node_modules/bootswatch/spacelab/bootswatch";
+@import "../../node_modules/bootswatch/spacelab/variables";
+
+#mainView {
+  margin-top:75px;
+}

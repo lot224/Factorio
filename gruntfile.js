@@ -102,8 +102,8 @@ module.exports = function (grunt) {
       if (asset['js'] != null && asset['js'].length > 0) {
         grunt.config('uglify.' + assetName, {
           options: {
-            banner: "(function(window, undefined) {'use strict';\n\n",
-            footer: "\n\n})(window);",
+            //banner: "(function(window, undefined) {'use strict';\n\n",
+            //footer: "\n\n})(window);",
             mangle: false,
             beautify: true,
           },
@@ -116,8 +116,8 @@ module.exports = function (grunt) {
 
         grunt.config('uglify.' + assetName + '-min', {
           options: {
-            banner: "(function(window, undefined) {'use strict';\n\n",
-            footer: "\n\n})(window);",
+            //banner: "(function(window, undefined) {'use strict';\n\n",
+            //footer: "\n\n})(window);",
             mangle: false,
             beautify: true,
           },
@@ -140,6 +140,7 @@ module.exports = function (grunt) {
   })
 
   // Default task(s).
-  grunt.registerTask('default', ['compass','build']);
+  grunt.registerTask('default', ['compass', 'build']);
+  grunt.registerTask('page1', ['build:page1']);
 
 };

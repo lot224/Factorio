@@ -1,7 +1,7 @@
 ﻿
-var page1Config = ['$routeProvider', function ($routeProvider) {
+var page1Config = ['$routeProvider', '$compileProvider', function ($routeProvider, $compileProvider) {
 
-  console.log('config hit');
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|data):/);
 
-  $routeProvider.when('/berger', { templateUrl: 'template.page1.html', controller: page1Controller });
+  $routeProvider.when('/page1', { templateUrl: 'template.page1.html', controller: page1Controller });
 }];

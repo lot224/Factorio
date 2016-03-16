@@ -5,5 +5,6 @@
  */
 angular.module("applicationModule", ['page1.templates'])
   .controller("page1Controller", page1Controller)
+  .service("itemService", itemService)
   .config(page1Config)
 //angular.module("applicationModule", ['page1Module']);
