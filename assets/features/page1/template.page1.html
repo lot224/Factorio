@@ -54,17 +54,22 @@
     <div class="col-sm-5">
       <input style="margin-bottom: 5px;" class="form-control" type="txtMaterialFilter" ng-model="_materialFilter" placeholder="filter" />
       <ul class="list-group" style="max-height: 250px; overflow-y: scroll;">
-        <a class="list-group-item" ng-repeat="item in items | filter:_materialFilter" ng-click="fn.addMaterial(item)"><span style="background-image: url('{{item.icon}}'); display: inline-block; width: 16px; height: 16px; background-size: 16px 16px; vertical-align: sub;"></span> {{item.name}}</a>
+        <a class="list-group-item" ng-repeat="item in items | filter:_materialFilter | orderBy:'name'" ng-click="fn.addMaterial(item)"><span style="background-image: url('{{item.icon}}'); display: inline-block; width: 16px; height: 16px; background-size: 16px 16px; vertical-align: sub;"></span>
+          <span style="float:right">
+            <span style="cursor:pointer;" class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="fn.removeMainMaterial($index)"></span>
+          </span>
+          <span>{{item.name}}</span>
+        </a>
       </ul>
     </div>
     <div class="col-sm-5">
       <ul class="list-group" style="max-height: 250px; overflow-y: scroll;">
-        <a class="list-group-item" ng-repeat="item in item.materials">
+        <a class="list-group-item" ng-repeat="item in item.materials | orderBy:'name'">
           <span style="float:right">
             <input class="form-control" type="text" style="padding:0px 8px; width:50px; height:24px; display:inline-block" ng-model="item.amount" />
             <span style="margin-left: 10px; cursor:pointer;" class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="fn.removeMaterial(item)"></span>
           </span>
-          <span style="background-image: url('{{item.icon}}'); display: inline-block; width: 16px; height: 16px; background-size: 16px 16px; vertical-align: sub;"></span> {{item.name}}
+          <span style="background-image: url('{{fn.getIcon(item.name)}}'); display: inline-block; width: 16px; height: 16px; background-size: 16px 16px; vertical-align: sub;"></span> {{item.name}}
         </a>
       </ul>
     </div>

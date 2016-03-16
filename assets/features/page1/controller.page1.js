@@ -27,8 +27,10 @@
         if ($scope.item.materials[i].name === item.name)
           return;
       }
-      var obj = angular.copy(item);
-      obj.amount = 1;
+      var obj = {
+        name: item.name,
+        amount: 1
+      };
       $scope.item.materials.push(obj);
     },
     removeMaterial: function (item) {
@@ -36,6 +38,15 @@
         if ($scope.item.materials[i].name === item.name) {
           $scope.item.materials.splice(i, 1);
         }
+      }
+    },
+    removeMainMaterial:function(index){
+      $scope.items.splice(index, 1);
+    },
+    getIcon : function (name) {
+      for (var i = 0 ; i < $scope.items.length; i++) {
+        if ($scope.items[i].name === name)
+          return $scope.items[i].icon;
       }
     },
     addItem: function () {
@@ -49,7 +60,7 @@
       return true;
     },
     download: function () {
-      return "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify($scope.items));
+      return "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(angular.copy($scope.items)));
     }
   };
 
